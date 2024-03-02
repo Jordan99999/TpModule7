@@ -1,3 +1,5 @@
 http://192.168.15.22/module7/register
 
 git init
+git add .
+git commit -m "TPMalik"
