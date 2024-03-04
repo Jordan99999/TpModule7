@@ -12,9 +12,10 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(VehiculeRepository $vehiculeRepository)
     {
-        $vehicules= $vehiculeRepository->findAll();
-        return $this->render('home/index.html.twig', 
-            ['vehicules'=> $vehicules]
+        $vehicules = $vehiculeRepository->findAll();
+        return $this->render(
+            'home/index.html.twig',
+            ['vehicules' => $vehicules]
         );
     }
 
@@ -28,6 +29,4 @@ class HomeController extends AbstractController
     {
         return $this->render('home/mentions.html.twig');
     }
-
-
 }

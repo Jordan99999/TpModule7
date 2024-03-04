@@ -17,60 +17,62 @@ class VehiculeController extends AbstractController
     #[Route('/vehicule', name: 'index_vehicule')]
     public function index(VehiculeRepository $vehiculeRepository)
     {
-        $vehicules= $vehiculeRepository->findAll();
-        return $this->render('vehicule/index.html.twig', 
-            ['vehicules'=> $vehicules]
+        $vehicules = $vehiculeRepository->findAll();
+        return $this->render(
+            'vehicule/index.html.twig',
+            ['vehicules' => $vehicules]
         );
     }
 
     #[Route("/new_vehicule", name: "new_vehicule")]
-    public function new_vehicule(Request $request, EntityManagerInterface $em){
+    public function new_vehicule(Request $request, EntityManagerInterface $em)
+    {
 
-        $data=[];
+        $data = [];
         $vehicule = new Vehicule();
-        $form= $this->createForm(VehiculeType::class, $vehicule); 
+        $form = $this->createForm(VehiculeType::class, $vehicule);
 
-        $data["form"]= $form;
+        $data["form"] = $form;
 
         $form->handleRequest(($request));
 
-        if($form->isSubmitted()&& $form->isValid()){
-            $em->persist($vehicule); 
-            $em->flush(); 
-            return $this->redirectToRoute("index_vehicule"); 
-        }; 
-        return $this->render("vehicule/new_vehicule.html.twig",$data);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->persist($vehicule);
+            $em->flush();
+            return $this->redirectToRoute("index_vehicule");
+        };
+        return $this->render("vehicule/new_vehicule.html.twig", $data);
     }
-    #[Route("/update/{id}", name:"update_vehicule")]
+    #[Route("/update/{id}", name: "update_vehicule")]
     public function update(
-        int $id , 
+        int $id,
         VehiculeRepository $vehiculeRepository,
         Request $request,
-        EntityManagerInterface $em 
-        ){
+        EntityManagerInterface $em
+    ) {
 
-        $vehicule = $vehiculeRepository->findOneBy(["id"=> $id]);
+        $vehicule = $vehiculeRepository->findOneBy(["id" => $id]);
 
-        $form = $this->createForm(VehiculeType::class , $vehicule , ["label"=> "modifier"]);
+        $form = $this->createForm(VehiculeType::class, $vehicule, ["label" => "modifier"]);
 
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $em->persist($vehicule);
-            $em->flush(); 
+            $em->flush();
             return $this->redirectToRoute("index_vehicule");
         }
 
-        return $this->render("vehicule/update.html.twig" , ["form" => $form]);
+        return $this->render("vehicule/update.html.twig", ["form" => $form]);
     }
-    #[Route("/delete/{id}", name:"delete_vehicule")]
+    #[Route("/delete/{id}", name: "delete_vehicule")]
     public function delete(
         int $id,
-        EntityManagerInterface $em , 
+        EntityManagerInterface $em,
         VehiculeRepository $vehiculeRepository
-        ){
-            $vehicule = $vehiculeRepository->findOneBy(["id"=> $id]);
-            $em->remove($vehicule); 
-            $em->flush(); 
-            return $this->redirectToRoute("index_vehicule");
+    ) {
+        $vehicule = $vehiculeRepository->findOneBy(["id" => $id]);
+        $em->remove($vehicule);
+        $em->flush();
+        return $this->redirectToRoute("index_vehicule");
     }
 }
