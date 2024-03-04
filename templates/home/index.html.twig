@@ -84,4 +84,37 @@
 
 		</div>
 	</section>
+<section class= "container">
+    <table class="table table-striped align-middle">
+        <thead>
+            <tr>
+                <th>#id</th>
+                <th>nom</th>
+                <th>modele</th>
+                <th>description</th>
+                <th>date_creation</th>
+                <th>image</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for vehicule in vehicules %}
+                <tr>
+                    <td>{{ vehicule.id }}</td>
+                    <td>{{ vehicule.nom }}</td>
+                    <td>{{vehicule.modele}}</td>
+                    <td>{{vehicule.description}}</td>
+                    <td>{{vehicule.dateCreation|date('d-m-Y')}}</td>
+                    <td><img src="{{vehicule.image}}" style=" height:100px; width:12rem"></td>
+                </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+
+</section>
+
+
+
+
+
 </div>{% endblock %}

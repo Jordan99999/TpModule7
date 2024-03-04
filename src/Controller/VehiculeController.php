@@ -23,7 +23,7 @@ class VehiculeController extends AbstractController
         );
     }
 
-    #[Route("/new", name: "new_vehicule")]
+    #[Route("/new_vehicule", name: "new_vehicule")]
     public function new_vehicule(Request $request, EntityManagerInterface $em){
 
         $data=[];
