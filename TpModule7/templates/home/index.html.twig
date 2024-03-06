@@ -2,9 +2,7 @@
 
 {% block title %}Caradisiac - Accueil
 {% endblock %}
-
 {% block body %}
-
 	<div class="container">
 		<br>
 		<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
@@ -34,16 +32,11 @@
 				<span class="carousel-control-next-icon" aria-hidden="true"></span>
 			</a>
 		</div>
-
-		<h1 class="display-2 py-3">Notre catalogue</h1>
-
+		<h1 class="text-center display-2 py-3">Notre catalogue</h1>
 		<section class="container text-center">
-
 			<div class="row">
-
 				<div class="col">
-
-					<div class="card" style="margin-top: 15px;">
+					<div class="card mt-15">
 						<img src="https://source.unsplash.com/random/1500x600/?car?v5" class="img-fluid" alt="...">
 						<div class="card-body">
 							<h5 class="card-title">Berlines</h5>
@@ -51,9 +44,8 @@
 						</div>
 					</div>
 				</div>
-
 				<div class="col">
-					<div class="card" style="margin-top: 15px;">
+					<div class="card mt-15">
 						<img src="https://source.unsplash.com/random/1500x600?v6" class="img-fluid" alt="...">
 						<div class="card-body">
 							<h5 class="card-title">Sportives</h5>
@@ -61,9 +53,8 @@
 						</div>
 					</div>
 				</div>
-
 				<div class="col">
-					<div class="card" style="margin-top: 15px;">
+					<div class="card mt-15">
 						<img src="https://source.unsplash.com/random/1500x600/?car?v7" class="img-fluid" alt="...">
 						<div class="card-body">
 							<h5 class="card-title">Familiales</h5>
@@ -71,9 +62,8 @@
 						</div>
 					</div>
 				</div>
-
 				<div class="col">
-					<div class="card" style="margin-top: 15px;">
+					<div class="card mt-15">
 						<img src="https://source.unsplash.com/random/1500x600/?car?v8" class="img-fluid" alt="...">
 						<div class="card-body">
 							<h5 class="card-title">Électriques</h5>
@@ -81,39 +71,34 @@
 						</div>
 					</div>
 				</div>
-
 			</div>
 		</section>
 		<section class="container mt-4">
 			<table class="table table-striped align-middle">
 				<thead>
 					<tr>
-						<th>#id</th>
-						<th>nom</th>
-						<th>modele</th>
-						<th>description</th>
-						<th>date_creation</th>
-						<th>image</th>
+						<th>Référence</th>
+						<th>Marque</th>
+						<th>Modéle</th>
+						<th>Points forts</th>
+						<th>Date d'arrivée</th>
+						<th ></th>
 					</tr>
 				</thead>
 				<tbody>
 					{% for vehicule in vehicules %}
 						<tr>
-							<td>{{ vehicule.id }}</td>
-							<td>{{ vehicule.nom }}</td>
+							<td>{{vehicule.id}}</td>
+							<td>{{vehicule.nom}}</td>
 							<td>{{vehicule.modele}}</td>
 							<td>{{vehicule.description}}</td>
 							<td>{{vehicule.dateCreation|date('d-m-Y')}}</td>
 							<td><img src="{{vehicule.image}}" style=" height:100px; width:12rem"></td>
 						</tr>
-
 					{% endfor %}
 				</tbody>
 			</table>
-
 		</section>
-
-
 	</div>
 {% endblock %}
 

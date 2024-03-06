@@ -24,7 +24,7 @@ class VehiculeController extends AbstractController
         );
     }
 
-    #[Route("/new_vehicule", name: "new_vehicule")]
+    #[Route("vehicule/new_vehicule", name: "new_vehicule")]
     public function new_vehicule(Request $request, EntityManagerInterface $em)
     {
 
@@ -43,7 +43,7 @@ class VehiculeController extends AbstractController
         };
         return $this->render("vehicule/new_vehicule.html.twig", $data);
     }
-    #[Route("/update/{id}", name: "update_vehicule")]
+    #[Route("vehicule/update/{id}", name: "update.vehicule", methods: ['GET', 'POST'])]
     public function update(
         int $id,
         VehiculeRepository $vehiculeRepository,
@@ -64,7 +64,7 @@ class VehiculeController extends AbstractController
 
         return $this->render("vehicule/update.html.twig", ["form" => $form]);
     }
-    #[Route("/delete/{id}", name: "delete_vehicule")]
+    #[Route("vehicule/delete/{id}", name: "delete_vehicule", methods: ['GET'])]
     public function delete(
         int $id,
         EntityManagerInterface $em,

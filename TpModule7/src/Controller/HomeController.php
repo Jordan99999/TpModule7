@@ -18,12 +18,6 @@ class HomeController extends AbstractController
             ['vehicules' => $vehicules]
         );
     }
-
-
-
-
-
-
     #[Route('/mentions', name: 'app_mentions')]
     public function mentions()
     {
