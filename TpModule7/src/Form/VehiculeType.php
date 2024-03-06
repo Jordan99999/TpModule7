@@ -22,8 +22,8 @@ class VehiculeType extends AbstractType
 
 
             ->add('creer', SubmitType::class, [
-                'label' => isset($options["label"]) ? $options["label"] : "Add",
-                'attr' => ['class' => 'btn btn-outline-dark']
+                'label' => isset($options["label"]) ? $options["label"] : "Créer",
+                'attr' => ['class' => 'btn btn-primary m-4']
             ]);
     }
 
