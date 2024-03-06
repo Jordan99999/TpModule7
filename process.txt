@@ -1,5 +1,105 @@
-http://192.168.15.22/module7/register
+http://192.168.15.22/module7/public/index.php/login
+
+si pb de timeout avec vagrant
+faire deja une sauvegarde du projet sur github
+creer un new repository sur git
+puis dans le terminal
+
+
+git config --global user.email "marc.boudalil@hotmail.fr"
+git config --global user.name "Jordan99999"
+
 
 git init
 git add .
-git commit -m "TPMalik"
+git commit -m "TpModule7"
+git remote add origin https://github.com/Jordan99999/TpModule7.git
+git branch -M main
+git push -u origin main
+
+Ensuite detruire .vagrant a gauche de VS code
+ouvrir la VM & refaire
+vagrant up
+http://192.168.15.22/module7/public/index.php/
+dans vagrant ssh
+cd /var/www/html/module7
+chmod 777 -R /var/www/html/module7/var
+
+php bin/console make:entity User
+
+
+
+// new essai
+chmod 777 -R /var/www/html/TpModule7/var
+
+http://192.168.15.22/TpModule7/public/index.php/
+dans 
+vagrant ssh
+cd /var/www/html/
+composer create-project symfony/skeleton TpModule7
+cd TpModule7
+composer require webapp
+
+dans template
+creer un fichier
+boostrap.html.twig
+
+créer un dossier fragment & a l'interieur
+header.html.twig
+footer.html.twig
+Ne pas oublier de modifier bootstrap en premier ligne a la place de base.html.twig
+
+
+dans boostrap
+créer:
+  {% include "fragment/header.html.twig" %}
+
+  {% block body %} 
+  {% endblock %}
+
+  {% block footer %}
+  {% include "fragment/footer.html.twig" %}
+  {% endblock %}
+
+php bin/console make:controller
+HomeController
+dans HomeController
+modifier:
+    #[Route('/home', name: 'app_home')]
+    public function index(): Response
+    {
+        return $this->render('home/index.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }
+pour  n'avoir que 
+    #[Route('/', name: 'app_home')]
+    public function index()
+    {
+        return $this->render('home/index.html.twig');
+    }
+
+Dans template/home, créer la page mentions
+mentions.html.twig
+
+dans HomeController créer la Route app_mentions pour afficher la page d'accueil et la page mentions
+
+    #[Route('/mentions', name: 'app_mentions')]
+    public function mentions()
+    {
+        return $this->render('home/mentions.html.twig');
+    }
+
+php bin/console make:entity
+Vehicule
+nom
+modele
+description
+date_creation
+image
+en_vente
+
+php bin/console make:migration
+
+php bin/console d:m:m
+
